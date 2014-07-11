@@ -1,0 +1,7 @@
+<%= link_to("Back", {action: 'index'}) %>
+
+<h1><%= @restaurant[:name] %></h1>
+<p><%= @restaurant[:phone] %></p>
+<%= link_to("Edit", { action: 'edit' }) %>   
+<%= link_to("Delete", { action: 'destroy' }) %>
+
