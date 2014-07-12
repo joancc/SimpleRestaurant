@@ -15,7 +15,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Restaurants</a>
+      <a class="brand" href=<%= root_path %>>
+        <%= image_tag("logo.png") %>
+      </a>
       <div class="nav-collapse">
         <ul class="nav">
           <li><%= link_to("Restaurant List", root_path ) %></li>
@@ -28,7 +30,7 @@
 </nav>
 
 <div class="container">
-<%= yield %>
+  <%= yield %>
 </div>
 
 </body>

@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 
@@ -29,6 +30,15 @@ gem 'spring',        group: :development
 gem 'less-rails'
 
 gem 'twitter-bootstrap-rails'
+
+# UPLOAD FILES
+# gem 'rmagick'
+gem 'mini_magick'
+gem 'carrierwave'
+# Work with cloud services such as AWS
+gem 'fog'
+# Handle .gitignore to avoid sharing credentials on GitHub
+gem 'figaro'
 
 group :development,:test do
   gem "rspec-rails"
