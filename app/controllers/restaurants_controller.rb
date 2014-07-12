@@ -16,6 +16,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
+      flash[:notice] = "Restaurant created successfully."
       redirect_to(action: 'index')
     else
       render('new')
@@ -29,6 +30,7 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update_attributes(restaurant_params)
+      flash[:notice] = "Restaurant updated successfully."
       redirect_to(action: 'show')
     else
       render('form')
@@ -36,6 +38,10 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    restaurant = Restaurant.find(params[:id])
+    restaurant.destroy
+    redirect_to(action: 'index')
+
   end
 
   private

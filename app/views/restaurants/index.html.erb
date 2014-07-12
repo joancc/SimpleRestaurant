@@ -1,8 +1,12 @@
+<div class="flash notice">
+  <%= flash[:notice] %>
+</div>
+
 <h1>Restaurant list</h1>
 <!-- new_restaurant_path is provided as a helper when including resources :restaurants in routes.rb -->
-<%= link_to("New Restaurant", new_restaurant_path) %>
+<!-- <%= link_to("New Restaurant", new_restaurant_path) %> -->
 <ul>
 	<% @restaurants.each do |restaurant| %>
-		<li><%= link_to("#{restaurant[:name]}", {action: 'show', id: restaurant[:id]}) %></li>
+		<li><%= link_to("#{restaurant.name}", {action: 'show', id: restaurant.id}) %></li>
 	<% end %>
 </ul>
