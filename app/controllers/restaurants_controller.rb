@@ -19,6 +19,7 @@ class RestaurantsController < ApplicationController
       flash[:notice] = "Restaurant created successfully."
       redirect_to(action: 'index')
     else
+      flash[:error] = @restaurant.errors.full_messages[0]
       render('new')
     end
   end
@@ -53,6 +54,6 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :description, :phone, :image)
+    params.require(:restaurant).permit(:name, :address, :description, :phone, :image, :menu)
   end
 end
