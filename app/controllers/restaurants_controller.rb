@@ -7,11 +7,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    if session[:user_id] = @restaurant[:user_id]
-      user_is_owner = true
-    else
-      user_is_owner = false
-    end
+    @user = User.find(@restaurant.user_id)
   end
 
   def new

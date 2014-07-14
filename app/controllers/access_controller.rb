@@ -6,6 +6,21 @@ class AccessController < ApplicationController
     #Login form
   end
 
+  def signup_form
+    @user = User.new
+  end
+
+  def signup
+    @user = User.new(params.permit(:email, :password, :name))
+    if @user.save
+      flash[:notice] = "Sign up successful."
+      redirect_to('/access/login')
+    else
+      flash[:error] = "Invalid input, please try again."
+      render('signup')
+    end
+  end
+
   def attempt_login
     if params[:email].present? && params[:password].present?
       found_user = User.where(email: params[:email]).first
@@ -32,5 +47,11 @@ class AccessController < ApplicationController
     session[:email] = nil
     flash[:notice] = "Logged out"
     redirect_to('/access/login')
+  end
+
+  private 
+
+  def access_params
+    params.require(:user).permit(:email, :password, :name)
   end
 end

@@ -1,18 +1,23 @@
 <%- model_class = Restaurant -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h3>Owner: <%= @user.name %></h3>
 </div>
 
 <dl class="dl-horizontal">
   
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @restaurant.name %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @restaurant.description %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
   <dd><%= @restaurant.address %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
   <dd><%= @restaurant.phone %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
   <dd><%= image_tag(@restaurant.image_url(:full).to_s, alt: "No file found") %></dd>
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
@@ -25,7 +30,7 @@
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               restaurants_path, :class => 'btn'  %>
-  <% if user_is_owner %>
+  <% if @restaurant.user_id.to_i == session[:user_id].to_i %>              
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_restaurant_path(@restaurant), :class => 'btn' %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
