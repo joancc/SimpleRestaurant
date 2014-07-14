@@ -49,6 +49,5 @@ test:
 #
 production:
   <<: *default
+  adapter:  postgresql
   database: simpleRestaurant_production
-  username: simpleRestaurant
-  password: <%= ENV['SIMPLERESTAURANT_DATABASE_PASSWORD'] %>

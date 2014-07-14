@@ -7,6 +7,11 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    if session[:user_id] = @restaurant[:user_id]
+      user_is_owner = true
+    else
+      user_is_owner = false
+    end
   end
 
   def new
@@ -15,11 +20,17 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      flash[:notice] = "Restaurant created successfully."
-      redirect_to(action: 'index')
+    if session[:user_id]
+      @restaurant[:user_id] = session[:user_id]
+      if @restaurant.save
+        flash[:notice] = "Restaurant created successfully."
+        redirect_to(action: 'index')
+      else
+        flash[:error] = @restaurant.errors.full_messages[0]
+        render('new')
+      end
     else
-      flash[:error] = @restaurant.errors.full_messages[0]
+      flash[:error] = "Please login to create a new entry."
       render('new')
     end
   end
@@ -42,7 +53,6 @@ class RestaurantsController < ApplicationController
     restaurant = Restaurant.find(params[:id])
     restaurant.destroy
     redirect_to(action: 'index')
-
   end
 
   private

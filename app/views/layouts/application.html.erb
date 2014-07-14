@@ -22,6 +22,13 @@
         <ul class="nav">
           <li><%= link_to("Restaurant List", root_path ) %></li>
           <li><%= link_to("New Restaurant", new_restaurant_path ) %></li>
+          <% if session[:user_id] %>
+            <%= session[:user_id] %>
+            <li><%= link_to("Logout", "/access/logout") %></li>
+          <% else %>
+            <li><%= link_to("Login", "/access/login") %></li>
+            <li><%= link_to("Signup", "/access/signup") %></li>
+          <% end %>
         </ul>
       </div>
     </div>

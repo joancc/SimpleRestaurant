@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'access/index'
+
+  get 'access/login'
+  get 'access/logout'
+
+  post 'access/attempt_login'
+
   root 'restaurants#index'
 
   # get 'restaurants/index'
