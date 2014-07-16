@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
       flash[:notice] = "Reservation successful."
-      render('/restaurants/show')
+      redirect_to(restaurant_path(@restaurant))
     else
       render('restaurants#show')
     end

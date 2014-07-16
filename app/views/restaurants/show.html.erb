@@ -45,7 +45,26 @@
   <% end %>
 </div>
 
+<% if @restaurant.user_id.to_i == session[:user_id].to_i && @owned_reservations %>
+  <div class="reservations">
+    <h3>Scheduled reservations:</h3>
+    <table>
+        <tr>
+          <th>Email</th>
+          <th>Time</th>
+        </tr>
+        <% @owned_reservations.each do |reservation| %>  
+          <tr>
+            <td><%= reservation.email %></td>
+            <td><%= reservation.time %></td>    
+          </tr>
+        <% end %>
+    </table>
+  </div>
+<% end %>
+
 <!-- Resevations -->
+<h3>Make reservation</h3>
 <%= form_for [@restaurant, @reservation] do |f| %>
     <%= f.label :email  %>
     <%= f.email_field :email %><br>
@@ -53,4 +72,4 @@
     <%= f.datetime_select :time, default: Time.now, prefix: :time %>
 
     <%= f.submit %>
-  <% end %>
+<% end %>

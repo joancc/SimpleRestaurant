@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @user = User.find(@restaurant.user_id)
     @reservation = Reservation.new(restaurant_id: @restaurant[:id])
+    @owned_reservations = Reservation.where(restaurant_id: @restaurant[:id])
   end
 
   def new

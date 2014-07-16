@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'access/index'
-
-  get 'access/login'
+  get  'access/index'
+  get  'access/login'
   post 'access/attempt_login'
-
-  get 'access/logout'
-  
-  get 'access/signup_form'
+  get  'access/logout'
+  get  'access/signup_form'
   post 'access/signup'
 
   root 'restaurants#index'
