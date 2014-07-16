@@ -1,3 +1,7 @@
+<div class="notice">
+  <%= flash[:notice] %>
+</div>
+
 <%- model_class = Restaurant -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
@@ -40,3 +44,13 @@
               :class => 'btn btn-danger' %>
   <% end %>
 </div>
+
+<!-- Resevations -->
+<%= form_for [@restaurant, @reservation] do |f| %>
+    <%= f.label :email  %>
+    <%= f.email_field :email %><br>
+    <%= f.label :time  %>
+    <%= f.datetime_select :time, default: Time.now, prefix: :time %>
+
+    <%= f.submit %>
+  <% end %>

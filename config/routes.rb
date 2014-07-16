@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   # get 'restaurants/update'
   # get 'restaurants/destroy'
 
-  resources :restaurants
+  resources :restaurants do
+    resources :reservations
+  end
+
   resources :users
 
   get '/all' => 'restaurants#index', as: 'all_restaurants'

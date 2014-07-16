@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @user = User.find(@restaurant.user_id)
+    @reservation = Reservation.new(restaurant_id: @restaurant[:id])
   end
 
   def new
