@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="flash">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+
 <nav class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -22,11 +27,11 @@
         <ul class="nav">
           <li><%= link_to("Restaurant List", root_path ) %></li>
           <li><%= link_to("New Restaurant", new_restaurant_path ) %></li>
-          <% if session[:user_id] %>
-            <li><%= link_to("Logout", "/access/logout") %></li>
+          <% if current_user %>
+            <li><%= link_to("Logout", destroy_user_session_path, method: :delete) %></li>
           <% else %>
-            <li><%= link_to("Login", "/access/login") %></li>
-            <li><%= link_to("Signup", "/users/new") %></li>
+            <li><%= link_to("Login", new_user_session_path) %></li>
+            <li><%= link_to("Signup", new_user_registration_path) %></li>
           <% end %>
         </ul>
       </div>

@@ -1,26 +1,12 @@
 Rails.application.routes.draw do
-  get  'access/index'
-  get  'access/login'
-  post 'access/attempt_login'
-  get  'access/logout'
-  get  'access/signup_form'
-  post 'access/signup'
-
+  devise_for :users
+  # resources :users
+  
   root 'restaurants#index'
-
-  # get 'restaurants/index'
-  # get 'restaurants/show'
-  # get 'restaurants/new'
-  # get 'restaurants/create'
-  # get 'restaurants/edit'
-  # get 'restaurants/update'
-  # get 'restaurants/destroy'
 
   resources :restaurants do
     resources :reservations
   end
-
-  resources :users
 
   get '/all' => 'restaurants#index', as: 'all_restaurants'
   get '/index' => redirect('/all')

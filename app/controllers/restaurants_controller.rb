@@ -18,8 +18,8 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if session[:user_id]
-      @restaurant[:user_id] = session[:user_id]
+    if current_user
+      @restaurant.user = current_user
       if @restaurant.save
         flash[:notice] = "Restaurant created successfully."
         redirect_to(action: 'index')

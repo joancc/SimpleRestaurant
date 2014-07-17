@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  
+  # Devise uses encrypted_password, which conflicts with password_digest from has_secure_password
+  # has_secure_password
   has_many :restaurants
 
   validates :password, presence: true, length: { minimum: 8 }

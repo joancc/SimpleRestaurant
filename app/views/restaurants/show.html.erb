@@ -28,22 +28,9 @@
   <dd><%= link_to(image_tag('menu.png', alt: "No file found", size: "40x40"), @restaurant.menu_url) %></dd>
 
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
-  <dd><%= image_tag("http://maps.google.com/maps/api/staticmap?center=#{@restaurant.address}&zoom=16&size=400x400&markers=#{@restaurant.address}") %></dd>
+  <dd><%= image_tag("http://maps.google.com/maps/api/staticmap?center=#{@restaurant.address}&zoom=16&size=400x400&markers=#{@restaurant.address}", {download: true}) %></dd>
 </dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              restaurants_path, :class => 'btn'  %>
-  <% if @restaurant.user_id.to_i == session[:user_id].to_i %>              
-    <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_restaurant_path(@restaurant), :class => 'btn' %>
-    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              restaurant_path(@restaurant),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-  <% end %>
-</div>
 
 <% if @restaurant.user_id.to_i == session[:user_id].to_i && @owned_reservations %>
   <div class="reservations">
@@ -73,3 +60,19 @@
 
     <%= f.submit %>
 <% end %>
+
+
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              restaurants_path, :class => 'btn'  %>
+  <% if @restaurant.user_id.to_i == session[:user_id].to_i %>              
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_restaurant_path(@restaurant), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              restaurant_path(@restaurant),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+  <% end %>
+</div>

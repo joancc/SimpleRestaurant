@@ -64,6 +64,9 @@ gem 'bcrypt'
 
 gem 'devise'
 
+#Client side validation
+gem 'parsley-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

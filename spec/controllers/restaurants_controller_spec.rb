@@ -4,7 +4,7 @@ RSpec.describe RestaurantsController, type: :controller do
   let!(:restaurant){Restaurant.create(name:"TestRestaurant")}
 
   context "GET index" do
-    it "should return all dogs" do
+    it "should return all instances" do
       get :index
       expect(assigns(:restaurants)).to include restaurant
     end
