@@ -24,3 +24,5 @@
 # Ignore recaptcha keys
 /config/secrets.yml
 /config/development.yml
+/config/database.yml
+/config/secrets.yml
