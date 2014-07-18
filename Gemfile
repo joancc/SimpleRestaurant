@@ -73,6 +73,9 @@ gem "recaptcha", :require => "recaptcha/rails"
 # Resque
 gem 'resque'
 
+# Redis
+gem 'redis'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
