@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   # resources :users
   
+  authenticated :user do
+    # root :to => "users#dashboard"
+    # Rails 4 users must specify the 'as' option to give it a unique name
+    root :to => "users#dashboard", :as => "authenticated_root"
+  end
+  # get '/users/dashboard'
+  
   root 'restaurants#index'
 
   resources :restaurants do
@@ -10,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/all' => 'restaurants#index', as: 'all_restaurants'
   get '/index' => redirect('/all')
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -41,4 +41,8 @@ Rails.application.configure do
   #MailCatcher
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
+
+  # Load development keys
+  YAML.load(File.read('config/development.yml'))
 end

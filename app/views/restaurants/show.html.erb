@@ -60,6 +60,8 @@
     <%= f.label :time  %>
     <%= f.datetime_select :time, default: Time.now%>
 
+    <%= recaptcha_tags %>
+
     <%= f.submit %>
 <% end %>
 
@@ -68,7 +70,7 @@
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               restaurants_path, :class => 'btn'  %>
-  <% if @restaurant.user_id.to_i == session[:user_id].to_i %>              
+  <% if @restaurant.user_id.to_i == current_user.id %>              
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_restaurant_path(@restaurant), :class => 'btn' %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

@@ -67,6 +67,9 @@ gem 'devise'
 #Client side validation
 gem 'parsley-rails'
 
+# Recaptcha
+gem "recaptcha", :require => "recaptcha/rails"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

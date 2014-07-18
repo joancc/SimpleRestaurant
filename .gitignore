@@ -20,3 +20,7 @@
 
 # Ignore folders
 /public/uploads/restaurant
+
+# Ignore recaptcha keys
+/config/secrets.yml
+/config/development.yml

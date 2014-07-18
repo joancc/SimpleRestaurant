@@ -50,7 +50,7 @@ class RestaurantsController < ApplicationController
   def destroy
     restaurant = Restaurant.find(params[:id])
     restaurant.destroy
-    redirect_to(action: 'index')
+    redirect_to(controller: 'users', action: 'dashboard')
   end
 
   private
