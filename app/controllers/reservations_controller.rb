@@ -8,7 +8,11 @@ class ReservationsController < ApplicationController
 
       if @reservation.save
         flash[:notice] = "Reservation successful."
-        ReservationMailer.reservation_notification(@reservation.restaurant.user, @reservation).deliver
+        350.times do 
+          Resque.enqueue(MailSender, @reservation.restaurant.user, @reservation)
+          # Enqueue the next line with the above line
+          # ReservationMailer.reservation_notification(@reservation.restaurant.user, @reservation).deliver
+        end
         redirect_to(restaurant_path(@restaurant))
       else
         render(show_restaurant_path)

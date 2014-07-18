@@ -45,4 +45,5 @@ Rails.application.configure do
 
   # Load development keys
   YAML.load(File.read('config/development.yml'))
+  YAML.load(File.read('config/redis.yml'))
 end

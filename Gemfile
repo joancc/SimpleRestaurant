@@ -70,6 +70,9 @@ gem 'parsley-rails'
 # Recaptcha
 gem "recaptcha", :require => "recaptcha/rails"
 
+# Resque
+gem 'resque'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
