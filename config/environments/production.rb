@@ -92,5 +92,6 @@ Rails.application.configure do
           :password       => ENV['SENDGRID_PASSWORD'],
           :domain         => 'heroku.com'
   }
+  # Domain name used when passing paths to the email such as edit_profile_path
   config.action_mailer.default_url_options = { :host => 'your_domain.com' }
 end
