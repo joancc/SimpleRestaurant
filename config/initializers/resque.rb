@@ -2,4 +2,4 @@
   # YAML.load(File.read('config/development.yml'))
 
 # config = YAML::load(File.open("#{Rails.root}/config/redis.yml"))[Rails.env]
-# Resque.redis = Redis.new(:host => config['host'], :port => config['port'])
+Resque.redis = Redis.new(:host => config['host'], :port => config['port'])

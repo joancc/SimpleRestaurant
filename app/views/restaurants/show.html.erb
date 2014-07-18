@@ -32,7 +32,7 @@
 </dl>
 
 
-<% if @restaurant.user_id.to_i == session[:user_id].to_i && @owned_reservations %>
+<% if current_user && @restaurant.user_id.to_i == current_user.id.to_i && @owned_reservations %>
   <div class="reservations">
     <h3>Scheduled reservations:</h3>
     <table>
@@ -70,7 +70,7 @@
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               restaurants_path, :class => 'btn'  %>
-  <% if @restaurant.user_id.to_i == current_user.id %>              
+  <% if current_user && @restaurant.user_id.to_i == current_user.id %>              
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_restaurant_path(@restaurant), :class => 'btn' %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
